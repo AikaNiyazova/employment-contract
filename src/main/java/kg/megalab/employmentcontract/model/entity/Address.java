@@ -31,13 +31,13 @@ public class Address extends AbstractPersistable<Long> {
     @Column(name = "house", nullable = false)
     String house;
 
-    @Column(name = "country")
+    @Column(name = "apartment")
     Integer apartment;
 
-    @Column(name = "country")
+    @Column(name = "postcode")
     Long postcode;
 
-    @OneToOne(mappedBy = "address")
-    Employee employee;
+//    @OneToOne(mappedBy = "address")
+//    Employee employee;
 
 }

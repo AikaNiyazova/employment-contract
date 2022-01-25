@@ -17,6 +17,6 @@ public class AddressDto {
     String house;
     Integer apartment;
     Long postcode;
-    EmployeeDto employee;
+//    EmployeeDto employee;
 
 }

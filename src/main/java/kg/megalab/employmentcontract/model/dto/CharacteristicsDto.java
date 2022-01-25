@@ -14,6 +14,6 @@ public class CharacteristicsDto {
     String hardSkills;
     String softSkills;
     String languages;
-    EmployeeDto employeeDto;
+//    EmployeeDto employeeDto;
 
 }

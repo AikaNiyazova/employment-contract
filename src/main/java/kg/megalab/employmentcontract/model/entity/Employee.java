@@ -34,7 +34,11 @@ public class Employee extends AbstractPersistable<Long> {
     List<EmployeesInProjects> employeesInProjects;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    @JoinColumn(name = "characteristics_id", referencedColumnName = "id")
+    Characteristics characteristics;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id", nullable = false)
     Address address;
 
     @Column(name = "is_active", columnDefinition = "BOOLEAN DEFAULT TRUE")

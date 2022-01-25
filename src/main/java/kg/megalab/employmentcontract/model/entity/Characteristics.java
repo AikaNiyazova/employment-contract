@@ -25,8 +25,7 @@ public class Characteristics extends AbstractPersistable<Long> {
     @Column(name = "languages", nullable = false)
     String languages;
 
-    @ManyToOne
-    @JoinColumn(name = "employee_id", referencedColumnName = "id", nullable = false)
-    Employee employee;
+//    @OneToOne(mappedBy = "characteristics")
+//    Employee employee;
 
 }

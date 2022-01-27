@@ -30,18 +30,18 @@ public class Employee extends AbstractPersistable<Long> {
     @JoinColumn(name = "position_id", referencedColumnName = "id")
     Position position;
 
-    @OneToMany(mappedBy = "employee")
-    List<EmployeesInProjects> employeesInProjects;
+//    @OneToMany(mappedBy = "employee")
+//    List<EmployeesInProjects> employeeInProjects;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "characteristics_id", referencedColumnName = "id")
     Characteristics characteristics;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
     Address address;
 
-    @Column(name = "is_active", columnDefinition = "BOOLEAN DEFAULT TRUE")
+    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT TRUE")
     Boolean isActive;
 
 }

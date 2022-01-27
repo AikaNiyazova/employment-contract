@@ -30,7 +30,10 @@ public class Project extends AbstractPersistable<Long> {
     @Column(name = "end_date")
     Date endDate;
 
-    @OneToMany(mappedBy = "project")
-    List<EmployeesInProjects> employeesInProjects;
+    @Column(name = "is_active", nullable = false, columnDefinition = "BOOLEAN DEFAULT TRUE")
+    Boolean isActive;
+
+//    @OneToMany(mappedBy = "project")
+//    List<EmployeesInProjects> employeesInProject;
 
 }

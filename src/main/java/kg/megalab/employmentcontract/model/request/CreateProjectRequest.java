@@ -1,23 +1,17 @@
-package kg.megalab.employmentcontract.model.dto;
+package kg.megalab.employmentcontract.model.request;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.util.Date;
-import java.util.List;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ProjectDto {
-
-    Long id;
+public class CreateProjectRequest {
     String projectName;
     Date startDate;
     Date endDate;
-    Boolean isActive;
-//    List<EmployeesInProjectsDto> employeesInProject;
-
 }

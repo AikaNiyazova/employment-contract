@@ -27,7 +27,7 @@ public class Employee extends AbstractPersistable<Long> {
     String patronymic;
 
     @ManyToOne
-    @JoinColumn(name = "position_id", referencedColumnName = "id")
+    @JoinColumn(name = "position_id", referencedColumnName = "id", nullable = false)
     Position position;
 
 //    @OneToMany(mappedBy = "employee")

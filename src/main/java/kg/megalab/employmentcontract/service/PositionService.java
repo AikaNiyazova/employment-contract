@@ -9,6 +9,6 @@ import org.springframework.stereotype.Service;
 public interface PositionService {
     PositionDto create(CreatePositionRequest request);
     PositionDto find(Long id);
-    PositionDto update(PositionDto positionDto);
+//    PositionDto update(PositionDto positionDto);
     MessageResponse delete(Long id);
 }

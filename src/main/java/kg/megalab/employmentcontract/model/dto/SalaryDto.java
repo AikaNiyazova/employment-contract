@@ -1,10 +1,10 @@
 package kg.megalab.employmentcontract.model.dto;
 
-import kg.megalab.employmentcontract.model.entity.Employee;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Data
 @Builder
@@ -14,7 +14,10 @@ import java.math.BigDecimal;
 public class SalaryDto {
 
     Long id;
-    Employee employee;
+    EmployeeDto employee;
     BigDecimal amount;
+    LocalDate startDate;
+    LocalDate endDate;
+    Boolean isActive;
 
 }

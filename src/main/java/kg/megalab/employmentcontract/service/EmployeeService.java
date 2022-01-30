@@ -11,5 +11,5 @@ public interface EmployeeService {
     EmployeeDto find(Long id);
     EmployeeDto update(EmployeeDto employeeDto);
     MessageResponse delete(Long id);
-//    void save(Employee employee);
+    Boolean existsByIdAndIsActiveTrue(Long id);
 }

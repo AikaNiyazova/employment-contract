@@ -3,8 +3,7 @@ package kg.megalab.employmentcontract.model.dto;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDate;
 
 @Data
 @Builder
@@ -15,8 +14,8 @@ public class ProjectDto {
 
     Long id;
     String projectName;
-    Date startDate;
-    Date endDate;
+    LocalDate startDate;
+    LocalDate endDate;
     Boolean isActive;
 //    List<EmployeesInProjectsDto> employeesInProject;
 

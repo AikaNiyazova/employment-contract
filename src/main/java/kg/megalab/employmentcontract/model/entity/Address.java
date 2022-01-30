@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Data
 @Entity
 @Builder
-@DynamicInsert
+@DynamicInsert // ???
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "tb_address")

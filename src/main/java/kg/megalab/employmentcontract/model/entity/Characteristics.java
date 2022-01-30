@@ -20,7 +20,7 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Characteristics extends AbstractPersistable<Long> {
 
-    @ElementCollection
+    @ElementCollection // For lists of simple objects
     @ColumnDefault("'N/A'")
     @Column(name = "hard_skills", nullable = false)
     List<String> hardSkills;

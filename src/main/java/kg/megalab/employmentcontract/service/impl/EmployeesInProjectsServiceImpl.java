@@ -1,6 +1,8 @@
 package kg.megalab.employmentcontract.service.impl;
 
 import kg.megalab.employmentcontract.exceptions.EmployeeInProjectNotFoundException;
+import kg.megalab.employmentcontract.exceptions.EmployeeNotFoundException;
+import kg.megalab.employmentcontract.exceptions.ProjectNotFoundException;
 import kg.megalab.employmentcontract.mapper.EmployeeMapper;
 import kg.megalab.employmentcontract.mapper.EmployeesInProjectsMapper;
 import kg.megalab.employmentcontract.mapper.ProjectMapper;
@@ -8,7 +10,7 @@ import kg.megalab.employmentcontract.model.dto.EmployeeDto;
 import kg.megalab.employmentcontract.model.dto.EmployeesInProjectsDto;
 import kg.megalab.employmentcontract.model.dto.ProjectDto;
 import kg.megalab.employmentcontract.model.entity.EmployeesInProjects;
-import kg.megalab.employmentcontract.model.request.CreateEmployeesInProjects;
+import kg.megalab.employmentcontract.model.request.CreateEmployeesInProjectsRequest;
 import kg.megalab.employmentcontract.repository.EmployeesInProjectsRepository;
 import kg.megalab.employmentcontract.service.EmployeeService;
 import kg.megalab.employmentcontract.service.EmployeesInProjectsService;
@@ -25,10 +27,20 @@ public class EmployeesInProjectsServiceImpl implements EmployeesInProjectsServic
     public final ProjectService projectService;
 
     @Override
-    public EmployeesInProjectsDto create(CreateEmployeesInProjects request) {
+    public EmployeesInProjectsDto create(CreateEmployeesInProjectsRequest request) {
 
-        EmployeeDto employeeDto = employeeService.find(request.getEmployeeId());
-        ProjectDto projectDto = projectService.find(request.getProjectId());
+        if (!employeeService.existsByIdAndIsActiveTrue(request.getEmployeeId())) {
+            throw new EmployeeNotFoundException
+                    ("Employee with id=" + request.getEmployeeId() + " doesn't exist");
+        }
+
+        if (!projectService.existsByIdAndIsActiveTrue(request.getProjectId())) {
+            throw new ProjectNotFoundException
+                    ("Project with id=" + request.getProjectId() + " doesn't exist");
+        }
+
+        EmployeeDto employeeDto = employeeService.find(request.getEmployeeId()); // findByIdAndIsActiveTrue ?
+        ProjectDto projectDto = projectService.find(request.getProjectId()); // findByIdAndIsActiveTrue ?
 
         EmployeesInProjects employeesInProjects = EmployeesInProjects
                 .builder()

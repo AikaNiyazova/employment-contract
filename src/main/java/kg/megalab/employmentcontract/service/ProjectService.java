@@ -11,4 +11,5 @@ public interface ProjectService {
     ProjectDto find(Long id);
     ProjectDto update(ProjectDto projectDto);
     MessageResponse delete(Long id);
+    Boolean existsByIdAndIsActiveTrue(Long id);
 }

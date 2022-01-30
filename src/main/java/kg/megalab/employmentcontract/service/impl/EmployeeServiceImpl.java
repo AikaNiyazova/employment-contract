@@ -36,9 +36,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         Characteristics characteristics = Characteristics
                 .builder()
-                .hardSkills(new ArrayList<String>())
-                .softSkills(new ArrayList<String>())
-                .languages(new ArrayList<String>())
+                .hardSkills(new ArrayList<>())
+                .softSkills(new ArrayList<>())
+                .languages(new ArrayList<>())
                 .build();
         characteristicsService.save(characteristics);
 
@@ -79,7 +79,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public EmployeeDto update(EmployeeDto employeeDto) {
         return employeeRepository
-                .findById(employeeDto.getId())
+                .findByIdAndIsActiveTrue(employeeDto.getId())
                 .map(employee -> {
                     employee.setLastName(employeeDto.getLastName());
                     employee.setPosition(PositionMapper.INSTANCE.toEntity(employeeDto.getPosition()));
@@ -93,12 +93,17 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public MessageResponse delete(Long id) {
         return employeeRepository
-                .findById(id)
+                .findByIdAndIsActiveTrue(id)
                 .map(employee -> {
                     employee.setIsActive(false);
                     employeeRepository.save(employee);
                     return new MessageResponse("Employee with id=" + id + " deleted");
         }).orElseThrow(() -> new EmployeeNotFoundException
                         ("Employee with id=" + id + " not found"));
+    }
+
+    @Override
+    public Boolean existsByIdAndIsActiveTrue(Long id) {
+        return employeeRepository.existsByIdAndIsActiveTrue(id);
     }
 }

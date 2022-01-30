@@ -37,23 +37,23 @@ public class PositionServiceImpl implements PositionService {
                                 ("Position with id=" + id + " not found")));
     }
 
-    @Override
-    public PositionDto update(PositionDto positionDto) {
-        return positionRepository
-                .findById(positionDto.getId())
-                .map(position -> {
-                    position.setPositionTitle(positionDto.getPositionTitle());
-                    positionRepository.save(position);
-                    return PositionMapper.INSTANCE.toDto(position);
-                })
-                .orElseThrow(() -> new PositionNotFoundException
-                        ("Position with id=" + positionDto.getId() + " not found"));
-    }
+//    @Override
+//    public PositionDto update(PositionDto positionDto) {
+//        return positionRepository
+//                .findByIdAndIsActiveTrue(positionDto.getId())
+//                .map(position -> {
+//                    position.setPositionTitle(positionDto.getPositionTitle());
+//                    positionRepository.save(position);
+//                    return PositionMapper.INSTANCE.toDto(position);
+//                })
+//                .orElseThrow(() -> new PositionNotFoundException
+//                        ("Position with id=" + positionDto.getId() + " not found"));
+//    }
 
     @Override
     public MessageResponse delete(Long id) {
         return positionRepository
-                .findById(id)
+                .findByIdAndIsActiveTrue(id)
                 .map(position -> {
                     position.setIsActive(false);
                     positionRepository.save(position);

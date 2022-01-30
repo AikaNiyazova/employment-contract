@@ -3,7 +3,7 @@ package kg.megalab.employmentcontract.model.request;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @Builder
@@ -12,6 +12,6 @@ import java.util.Date;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class CreateProjectRequest {
     String projectName;
-    Date startDate;
-    Date endDate;
+    LocalDate startDate;
+    LocalDate endDate;
 }

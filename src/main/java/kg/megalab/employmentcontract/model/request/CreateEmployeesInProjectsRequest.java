@@ -8,7 +8,7 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class CreateEmployeesInProjects {
+public class CreateEmployeesInProjectsRequest {
     Long employeeId;
     Long projectId;
     Integer daysInProject;

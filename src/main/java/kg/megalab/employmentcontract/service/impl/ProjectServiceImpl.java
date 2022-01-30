@@ -42,7 +42,7 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public ProjectDto update(ProjectDto projectDto) {
         return projectRepository
-                .findById(projectDto.getId())
+                .findByIdAndIsActiveTrue(projectDto.getId())
                 .map(project -> {
                     project.setProjectName(projectDto.getProjectName());
                     project.setStartDate(projectDto.getStartDate());
@@ -57,12 +57,17 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public MessageResponse delete(Long id) {
         return projectRepository
-                .findById(id)
+                .findByIdAndIsActiveTrue(id)
                 .map(project -> {
                     project.setIsActive(false);
                     projectRepository.save(project);
                     return new MessageResponse("Project with id=" + id + " deleted");
                 }).orElseThrow(() -> new ProjectNotFoundException
                         ("Project with id=" + id + " not found"));
+    }
+
+    @Override
+    public Boolean existsByIdAndIsActiveTrue(Long id) {
+        return projectRepository.existsByIdAndIsActiveTrue(id);
     }
 }
